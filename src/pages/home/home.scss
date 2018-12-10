@@ -1,0 +1,12 @@
+page-home {
+    ion-content{
+        background-size: cover;
+        background-position: center;
+        background-image: url('../../assets/imgs/quets.jpg');
+        .button{
+            position: relative;
+            top: 80%;
+            
+        }
+    }
+}

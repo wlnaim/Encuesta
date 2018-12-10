@@ -1,0 +1,30 @@
+<ion-content padding>
+
+  <form class="Formulario" [formGroup]="FormLogin" (ngSubmit)="logForm()">
+    <ion-item>
+      <ion-label color="blanco" floating>Email</ion-label>
+      <ion-input formControlName="Email" type="Email" required [(ngModel)]="Email"></ion-input>
+    </ion-item>
+
+    <ion-item no-lines text-center *ngIf="!FormLogin.controls.Email.valid">
+      <p>Por favor introduce un Email válida.</p>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label color="blanco" floating>Password</ion-label>
+      <ion-input formControlName="Password" type="Password" required [(ngModel)]="Password"></ion-input>
+    </ion-item>
+
+    <ion-item no-lines color="blanco" text-center *ngIf="!FormLogin.controls.Password.valid">
+      <p>Por favor introduce Password válido.</p>
+    </ion-item>
+
+
+    <button color="blanco" ion-button type="submit" block [disabled]="!FormLogin.valid">Inicio</button>
+  </form>
+
+
+<p text-center (click)="registrar()"><b>Registrar</b></p>
+
+</ion-content>

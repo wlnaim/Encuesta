@@ -1,0 +1,31 @@
+page-inicio {
+     ion-content {
+         height: 100%;
+       background-size: cover;
+       background-position: center;
+    //    background-image: url('../../assets/imgs/quets.jpg');
+       background-image: url('../../assets/imgs/loginquets.jpg');
+
+       .button {
+         position: relative;
+         top: 30%;
+
+       }
+
+       .list{
+            p{
+                color: #ffffff;
+            }
+            position: relative;
+            top: 20%;
+            ion-item{
+                 border-radius: 15px;
+                 box-shadow: 2px 2px .1px #797878;
+            }
+
+            button{
+                 border-radius: 15px;
+            }
+       }
+     }
+}

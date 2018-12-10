@@ -1,0 +1,33 @@
+page-new-quest {
+    .Mensaje{
+        ion-icon{
+            font-size: 50px;
+           
+        }
+    }
+
+    .iconos{
+        padding: 20px;
+        font-size: 25px;
+        color: #ffffff;
+    }
+
+    .flecha{
+         animation-duration: 3s;
+         animation-name: slidein;
+         animation-iteration-count: infinite;
+         animation-direction: alternate;
+    }
+
+    .formQuest{
+        background-color:  #039be5;
+        color: #ffffff;
+        ion-item{
+             border-radius: 15px;
+            
+        }
+
+    }
+
+
+}

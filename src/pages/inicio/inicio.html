@@ -1,0 +1,33 @@
+<!-- 
+<ion-header>
+  <ion-navbar>
+    <ion-title>inicio</ion-title>
+  </ion-navbar>
+
+</ion-header> -->
+
+
+<ion-content padding text-center>
+<button *ngIf="!vForm" col-12 col-sm-12 col-xl-12 large class="button" round ion-button color="blanco" (click)="Nuevo()">Nueva Quets</button>
+
+<ion-list class="list" *ngIf="vForm" > 
+  <P>
+    Escriba el nombre de la nueva "Quets" y su descripcion.
+  </P>
+
+  <ion-item>
+    <ion-label fixed>Nombre</ion-label>
+    <ion-input type="text" value=""></ion-input>
+  </ion-item>
+
+  <ion-item margin-top>
+    <ion-label fixed>Descripcion</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+
+<button margin-top  ion-button color="blanco" (click)="Registrar()">Registrar</button>
+<button margin-top ion-button color="danger" (click)="Cancelar()">Cancelar</button>
+
+</ion-list>
+
+</ion-content>

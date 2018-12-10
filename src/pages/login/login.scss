@@ -1,0 +1,26 @@
+page-login {
+  ion-content {
+    background-size: cover;
+    background-position: center;
+    background-image: url('../../assets/imgs/loginquets.jpg');
+    color: #ffffff;
+    p{
+        color: #ffffff;
+    }
+    .Formulario {
+      margin-top: 10%;
+
+      ion-item {
+
+        background-color: rgba(5, 5, 5, 0);
+        ion-label{
+             color: #ffffff;
+        }
+        p {
+          color: #ffffff;
+        }
+      }
+    }
+
+  }
+}

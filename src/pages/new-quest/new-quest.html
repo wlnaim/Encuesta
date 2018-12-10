@@ -1,0 +1,122 @@
+<ion-header>
+
+  <ion-navbar color="azul">
+    <ion-title>Nueva Quets</ion-title>
+    <ion-buttons end *ngIf="Quets[0].Abiertas.length >= 2 || Quets[0].Cerrada.length >= 2  || Quets[0].Abiertas.length + Quets[0].Cerrada.length >= 2 ">
+      <button right ion-button (click)="Enviar()">
+        Enviar
+<ion-icon icon-end name="send"></ion-icon>
+
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <!-- Secciona de las preguntas abiertas -->
+  <div *ngIf="VMensaje" text-center class="Mensaje">
+    <h1 text-center padding style="margin-top: 50%;">
+      Selecciona el tipo de pregunta que requieras
+    </h1>
+    <ion-icon color="azul" name="arrow-round-down"></ion-icon>
+  </div>
+
+  <div padding text-center class="formQuest" *ngIf="Vabierta">
+    <h2 margin>
+      Escribe tu pregunta(s)
+    </h2>
+    <p margin-left text-left>
+      Escribe tus opciones
+    </p>
+    <ion-item>
+      <ion-input [(ngModel)]="Pregunta" placeholder="Quets"></ion-input>
+    </ion-item>
+    <button margin-top color="blanco" round icon-end ion-button (click)="NewAbierta()">
+      Guardar
+    </button>
+  </div>
+
+
+
+
+  <!-- Secciona de las preguntas cerradas -->
+  <div padding class="formQuest" text-center *ngIf="Vcerrada">
+
+    <h2 text-wrap>
+      Escriba la preguntas juntos con las opciones
+    </h2>
+
+    <p margin-left text-left>
+      Escribe tu pregunta
+    </p>
+    <ion-item>
+      <ion-input [(ngModel)]="Pregunta" placeholder="Quets"></ion-input>
+    </ion-item>
+
+
+    <div>
+      <p margin-left text-left>
+        Escribe tus opciones
+      </p>
+      <ion-item margin-top *ngFor="let Opciones of Opciones; let i = index">
+        <ion-input [(ngModel)]="Opciones[i]" clearInput type="text" placeholder="Opcion {{1 + i}}" (ngModelChange)="cambiaLado($event, i)"></ion-input>
+      </ion-item>
+      <div>
+        <ion-icon class="iconos" name="md-add-circle" (click)="masOpciones()"></ion-icon>
+        <ion-icon class="iconos" name="md-remove-circle" (click)="menosOpciones()"></ion-icon>
+      </div>
+
+
+    </div>
+    <button color="blanco" text-center round icon-end ion-button (click)="NewAbierta()">
+      Guardar
+      <ion-icon name="md-create"></ion-icon>
+    </button>
+  </div>
+
+
+
+
+
+
+
+  <ion-list >
+    <h1 *ngIf="Quets[0].Abiertas.length != 0 || Quets[0].Cerrada.length != 0" text-center>
+      Mis Preguntas:
+    </h1>
+
+    <ion-item *ngFor="let Abiertas of Quets[0].Abiertas; let i = index">
+      {{ Abiertas.Pregunta }}
+      <p>
+        <b>Tipo: </b>Abierta
+      </p>
+      <ion-icon name="ios-close" item-end (click)="delQuets(Abiertas, i )"></ion-icon>
+    </ion-item>
+
+    <ion-item *ngFor="let Cerrada of Quets[0].Cerrada; let i = index">
+
+      {{ Cerrada.Pregunta }}
+      <p>
+        <b>Tipo: </b>Cerrada <b>Opciones #</b> {{Cerrada.Opciones.length}}
+      </p>
+      <ion-icon name="ios-close" item-end (click)="delQuets(Cerrada, i)"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+
+</ion-content>
+
+<ion-footer>
+  <ion-row text-center>
+    <ion-col col-12>
+      Selecciones el tipo de pregunta:
+    </ion-col>
+    <ion-col padding col-6 *ngFor="let Tipo of Tipo">
+      <button ion-button round color="{{Tipo.Activo}}" (click)="SelectTipo(Tipo.Tipo)">{{Tipo.Quets}}
+      </button>
+    </ion-col>
+  </ion-row>
+</ion-footer>
