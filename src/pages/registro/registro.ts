@@ -1,32 +1,35 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { UsuarioProvider } from '../../providers/usuario/usuario';
 
 
-@IonicPage({
-  name: 'page-registro'
-})
+
 @Component({
   selector: 'page-registro',
   templateUrl: 'registro.html',
 })
 export class RegistroPage {
 
-  private FormRegistro: FormGroup;
+  public myForm: FormGroup;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    private formBuilder: FormBuilder
+    public formBuilder: FormBuilder,
+    public UsuarioProv: UsuarioProvider
   ) {
 
-    this.FormRegistro = this.formBuilder.group({
-      Nombres: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
-      Apellidos: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
-      Nacimiento: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
-      Email: ['', Validators.compose([Validators.required, Validators.email])],
-      Password1: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
-      Password2: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
-
+    this.myForm = this.formBuilder.group({
+      primerNombre: ['', Validators.compose([Validators.required])],
+      primerApellido: ['', Validators.compose([Validators.required])],
+      fechaNacimiento: ['', Validators.compose([Validators.required])],
+      email: ['', Validators.compose([Validators.required, Validators.email])],
+      calle: ['', Validators.compose([Validators.required])],
+      segundoNombre: [''],
+      segundoApellido: [''],
+      telefono: ['', Validators.required],
+      password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+      //confirmPassword: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
     });
   }
 
@@ -34,11 +37,15 @@ export class RegistroPage {
     console.log('ionViewDidLoad RegistroPage');
   }
 
-  regForm() {
-    console.log(this.FormRegistro.value)
-    console.log(this.FormRegistro)
+  registrarse() {
+    console.log(this.myForm.value);
+    if (!this.myForm.valid) {
+      this.UsuarioProv.PostUsuarioMobile(this.myForm)
+        .then(data => {
 
+        })
+    }
   }
 
- 
+
 }

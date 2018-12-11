@@ -1,0 +1,82 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Registrar</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="contenedor" padding>
+
+    <form [formGroup]="myForm" class="Formulario" (ngSubmit)="registrarse()" novalidate>
+      <ion-list>
+        <ion-item>
+          <ion-label stacked>Primer Nombre:</ion-label>
+          <ion-input formControlName="primerNombre" type="text" placeholder="Primer Nombre"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="myForm.get('primerNombre').errors && myForm.get('primerNombre').dirty">
+          <p *ngIf="myForm.get('primerNombre').hasError('required')">Campo Requerido</p>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked>Segundo Nombre:</ion-label>
+          <ion-input formControlName="segundoNombre" type="text" placeholder="Segundo Nombre"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked>Primer Apellido:</ion-label>
+          <ion-input formControlName="primerApellido" type="text" placeholder="Primer Apellido"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="myForm.get('primerApellido').errors && myForm.get('primerApellido').dirty">
+          <p *ngIf="myForm.get('primerApellido').hasError('required')">Campo Requerido</p>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label stacked>Segundo Apellido:</ion-label>
+          <ion-input formControlName="segundoApellido" type="text" placeholder="Segundo Apellido"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label stacked>Email:</ion-label>
+          <ion-input formControlName="email" type="text" placeholder="Email"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="myForm.get('email').errors && myForm.get('email').dirty">
+          <p *ngIf="myForm.get('email').hasError('required')">Campo Requerido</p>
+          <p *ngIf="myForm.get('email').hasError('required')">Formato Incorrecto</p>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label stacked>Fecha de Nacimiento:</ion-label>
+          <ion-input formControlName="fechaNacimiento" type="date" placeholder="Fecha de Nacimiento"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="myForm.get('fechaNacimiento').errors && myForm.get('fechaNacimiento').dirty">
+          <p *ngIf="myForm.get('fechaNacimiento').hasError('required')">Campo Requerido</p>>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label stacked>Direccion:</ion-label>
+          <ion-input formControlName="calle" type="text" placeholder="Direccion"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="myForm.get('calle').errors && myForm.get('calle').dirty">
+          <p *ngIf="myForm.get('calle').hasError('required')">Campo Requerido</p>>
+        </ion-item>
+  
+        <ion-item>
+            <ion-label stacked>Telefono:</ion-label>
+            <ion-input formControlName="telefono" type="tel" placeholder="Telefono"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="myForm.get('telefono').errors && myForm.get('telefono').dirty">
+            <p *ngIf="myForm.get('telefono').hasError('required')">Campo Requerido</p>>
+          </ion-item>
+  
+          <ion-item>
+              <ion-label stacked>Contraseña:</ion-label>
+              <ion-input formControlName="password" type="password" placeholder="Contraseña"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="myForm.get('password').errors && myForm.get('password').dirty">
+              <p *ngIf="myForm.get('password').hasError('required')">Campo Requerido</p>
+            </ion-item>
+      </ion-list>
+      <button ion-button color="blanco" type="submit" block [disabled]="!myForm.valid" (click)="registrarse()">Registrar</button>
+    </form>
+  
+  </ion-content>
